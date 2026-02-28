@@ -70,7 +70,7 @@ jobs:
         run: |
           set -euo pipefail
           repo_key="${GITHUB_REPOSITORY//\//_}"
-          persist_root="${PERSIST_ROOT:-$HOME/.cache/reasbook-ci/$repo_key}"
+          persist_root="${PERSIST_ROOT:-${HOME:-/root}/.cache/reasbook-ci/$repo_key}"
           echo "PERSIST_ROOT=$persist_root" >> "$GITHUB_ENV"
           echo "Using persistent root: $persist_root"
           mkdir -p "$persist_root/reasbook_lake" \
@@ -235,7 +235,7 @@ jobs:
         run: |
           set -euo pipefail
           repo_key="${GITHUB_REPOSITORY//\//_}"
-          persist_root="${PERSIST_ROOT:-$HOME/.cache/reasbook-ci/$repo_key}"
+          persist_root="${PERSIST_ROOT:-${HOME:-/root}/.cache/reasbook-ci/$repo_key}"
           mkdir -p "$persist_root/elan"
           if [ -d "$HOME/.elan" ]; then
             if command -v rsync >/dev/null 2>&1; then
@@ -272,7 +272,7 @@ jobs:
         run: |
           set -euo pipefail
           repo_key="${GITHUB_REPOSITORY//\//_}"
-          persist_root="${PERSIST_ROOT:-$HOME/.cache/reasbook-ci/$repo_key}"
+          persist_root="${PERSIST_ROOT:-${HOME:-/root}/.cache/reasbook-ci/$repo_key}"
           echo "PERSIST_ROOT=$persist_root" >> "$GITHUB_ENV"
           echo "Using persistent root: $persist_root"
           mkdir -p "$persist_root/reasbook_lake" \
@@ -356,7 +356,7 @@ jobs:
         run: |
           set -euo pipefail
           repo_key="${GITHUB_REPOSITORY//\//_}"
-          persist_root="${PERSIST_ROOT:-$HOME/.cache/reasbook-ci/$repo_key}"
+          persist_root="${PERSIST_ROOT:-${HOME:-/root}/.cache/reasbook-ci/$repo_key}"
           mkdir -p "$persist_root/elan"
           if [ -d "$HOME/.elan" ]; then
             if command -v rsync >/dev/null 2>&1; then
