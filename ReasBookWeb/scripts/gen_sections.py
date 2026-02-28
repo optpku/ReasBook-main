@@ -10,11 +10,11 @@ from pathlib import Path
 from typing import Iterable
 import json
 
-SITE_BASE = "https://optsuite.github.io/ReasBook/"
+SITE_BASE = "https://imathwy.github.io/ReasBook-main/"
 SITE_ROOT = "/ReasBook/"
 DOCS_BASE = f"{SITE_BASE}docs/"
-GITHUB_SOURCE_BASE = "https://github.com/optsuite/ReasBook/blob/main/ReasBook/"
-GITHUB_TREE_BASE = "https://github.com/optsuite/ReasBook/tree/main/ReasBook/"
+GITHUB_SOURCE_BASE = "https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/"
+GITHUB_TREE_BASE = "https://github.com/imathwy/ReasBook-main/tree/main/ReasBook/"
 
 BOOK_TITLES = {
     "ConvexAnalysis_Rockafellar_1970": "Convex Analysis (Rockafellar, 1970)",
