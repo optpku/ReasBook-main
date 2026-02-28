@@ -643,6 +643,7 @@ jobs:
 
   deploy:
     needs: assemble-pages-artifact
+    if: always() && needs.assemble-pages-artifact.result == 'success'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
