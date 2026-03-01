@@ -1129,14 +1129,14 @@ def write_root_readme(repo_root: Path, source_root: Path) -> None:
     lines = readme_path.read_text(encoding="utf-8").splitlines()
     changed = False
 
-    def update_links_line(i: int, lean_src: str, verso: str) -> None:
+    def update_links_line(i: int, docs: str, lean_src: str, verso: str) -> None:
         nonlocal changed
         expected = "  - Links:"
         if i < 0 or i >= len(lines):
             return
         if not lines[i].startswith(expected):
             return
-        new_line = f"  - Links: [Lean source]({lean_src}) | [Verso]({verso})"
+        new_line = f"  - Links: [Documentation]({docs}) | [Lean source]({lean_src}) | [Verso]({verso})"
         if lines[i] != new_line:
             lines[i] = new_line
             changed = True
@@ -1148,8 +1148,10 @@ def write_root_readme(repo_root: Path, source_root: Path) -> None:
         has_book_agg = (source_root / "Books" / book / "Book.lean").exists()
         if has_book_agg:
             lean_src = f"{GITHUB_TREE_BASE}Books/{book}/Chapters"
+            docs_link = f"{DOCS_BASE}Books/{book}/Book.html"
         else:
             lean_src = f"{GITHUB_TREE_BASE}Books/{book}"
+            docs_link = f"{DOCS_BASE}Books/{book}/"
 
         for i, line in enumerate(lines):
             if f"/Books/{book})" in line and line.startswith("- ["):
@@ -1160,7 +1162,7 @@ def write_root_readme(repo_root: Path, source_root: Path) -> None:
                 # Contributors line is usually i+1, links i+2
                 for j in range(i + 1, min(i + 6, len(lines))):
                     if lines[j].startswith("  - Links:"):
-                        update_links_line(j, lean_src, book_verso)
+                        update_links_line(j, docs_link, lean_src, book_verso)
                         break
 
     # Papers block
@@ -1170,8 +1172,10 @@ def write_root_readme(repo_root: Path, source_root: Path) -> None:
         has_paper_agg = (source_root / "Papers" / paper / "Paper.lean").exists()
         if has_paper_agg:
             lean_src = f"{GITHUB_TREE_BASE}Papers/{paper}/Sections"
+            docs_link = f"{DOCS_BASE}Papers/{paper}/Paper.html"
         else:
             lean_src = f"{GITHUB_TREE_BASE}Papers/{paper}"
+            docs_link = f"{DOCS_BASE}Papers/{paper}/"
 
         for i, line in enumerate(lines):
             if f"/Papers/{paper})" in line and line.startswith("- ["):
@@ -1181,7 +1185,7 @@ def write_root_readme(repo_root: Path, source_root: Path) -> None:
                     changed = True
                 for j in range(i + 1, min(i + 6, len(lines))):
                     if lines[j].startswith("  - Links:"):
-                        update_links_line(j, lean_src, paper_verso)
+                        update_links_line(j, docs_link, lean_src, paper_verso)
                         break
 
     if changed:

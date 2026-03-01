@@ -88,17 +88,6 @@ jobs:
             fi
           fi
 
-      - name: Restore elan cache
-        continue-on-error: true
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            ~/.elan/bin
-            ~/.elan/toolchains
-          key: elan-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ReasBook/lean-toolchain', 'ReasBookWeb/lean-toolchain') }}
-          restore-keys: |
-            elan-${{ runner.os }}-${{ runner.arch }}-
-
       - name: Install elan (Lean toolchain manager)
         run: |
           if [ ! -x "${HOME:-/root}/.elan/bin/elan" ]; then
@@ -220,16 +209,6 @@ jobs:
             ReasBook/.lake/build/lib/lean
           key: lake-reasbook-lite-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ReasBook/lean-toolchain') }}-${{ hashFiles('ReasBook/lake-manifest.json') }}-shared-${{ github.run_id }}-${{ github.run_attempt }}
 
-      - name: Save elan cache
-        if: always()
-        continue-on-error: true
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            ~/.elan/bin
-            ~/.elan/toolchains
-          key: elan-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ReasBook/lean-toolchain', 'ReasBookWeb/lean-toolchain') }}
-
       - name: Persist elan toolchain
         if: always()
         run: |
@@ -289,17 +268,6 @@ jobs:
               cp -a "$persist_root/elan/." "${HOME:-/root}/.elan/"
             fi
           fi
-
-      - name: Restore elan cache
-        continue-on-error: true
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            ~/.elan/bin
-            ~/.elan/toolchains
-          key: elan-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ReasBook/lean-toolchain', 'ReasBookWeb/lean-toolchain') }}
-          restore-keys: |
-            elan-${{ runner.os }}-${{ runner.arch }}-
 
       - name: Install elan (Lean toolchain manager)
         run: |

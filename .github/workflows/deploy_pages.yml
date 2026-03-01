@@ -200,17 +200,6 @@ jobs:
             fi
           fi
 
-      - name: Restore elan cache
-        continue-on-error: true
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            ~/.elan/bin
-            ~/.elan/toolchains
-          key: elan-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ReasBook/lean-toolchain', 'ReasBookWeb/lean-toolchain') }}
-          restore-keys: |
-            elan-${{ runner.os }}-${{ runner.arch }}-
-
       - name: Install elan (Lean toolchain manager)
         run: |
           if [ ! -x "${HOME:-/root}/.elan/bin/elan" ]; then
@@ -259,16 +248,6 @@ jobs:
             ReasBook/.lake/build/bin
             ReasBook/.lake/build/lib/lean
           key: lake-reasbook-lite-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ReasBook/lean-toolchain') }}-${{ hashFiles('ReasBook/lake-manifest.json') }}
-
-      - name: Save elan cache
-        if: always()
-        continue-on-error: true
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            ~/.elan/bin
-            ~/.elan/toolchains
-          key: elan-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ReasBook/lean-toolchain', 'ReasBookWeb/lean-toolchain') }}
 
       - name: Persist elan toolchain
         if: always()
@@ -323,17 +302,6 @@ jobs:
               cp -a "$persist_root/elan/." "${HOME:-/root}/.elan/"
             fi
           fi
-
-      - name: Restore elan cache
-        continue-on-error: true
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            ~/.elan/bin
-            ~/.elan/toolchains
-          key: elan-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ReasBook/lean-toolchain', 'ReasBookWeb/lean-toolchain') }}
-          restore-keys: |
-            elan-${{ runner.os }}-${{ runner.arch }}-
 
       - name: Install elan (Lean toolchain manager)
         run: |
@@ -479,16 +447,6 @@ jobs:
             ReasBookWeb/.lake/build/bin
             ReasBookWeb/.lake/build/lib/lean
           key: lake-reasbookweb-lite-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ReasBookWeb/lean-toolchain') }}-${{ hashFiles('ReasBookWeb/lake-manifest.json') }}
-
-      - name: Save elan cache
-        if: always()
-        continue-on-error: true
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            ~/.elan/bin
-            ~/.elan/toolchains
-          key: elan-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ReasBook/lean-toolchain', 'ReasBookWeb/lean-toolchain') }}
 
       - name: Persist elan toolchain
         if: always()
