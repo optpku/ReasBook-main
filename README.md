@@ -6,9 +6,6 @@ We welcome collaboration from researchers, students, and practitioners.
 
 ReasBook is generated using the tool: [M2F](https://github.com/optsuite/M2F.git).
 
-> Branch note (`verso-only-preview`): this branch is optimized for fast Verso preview.
-> Local build here is intended for fast Verso preview.
-
 ## Current Coverage
 
 ### Books
@@ -76,7 +73,7 @@ Examples:
 
 ## Build
 
-### Fast preview (Verso-only, recommended on this branch)
+### Fast preview (Verso-only, recommended)
 
 From the repository root:
 
