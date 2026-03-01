@@ -15,4 +15,9 @@ python3 scripts/gen_sections.py
 echo "[build_reasbook_web] skipping cache get (no 'lake exe cache' in ReasBookWeb)"
 
 echo "[build_reasbook_web] building Verso site"
+if ulimit -s unlimited 2>/dev/null; then
+  echo "[build_reasbook_web] stack limit set to unlimited"
+else
+  echo "[build_reasbook_web] unable to raise stack limit; continuing with current limit"
+fi
 "$LAKE_BIN" exe reasbook-site

@@ -20,11 +20,11 @@ Verso links:
 
 Section overviews:
 
-- [2.1 Sequences and Limits file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap02/section01.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap02/section01/))
-- [2.2 Facts About Limits of Sequences file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap02/section02.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap02/section02/))
-- [2.3 Limit Superior, Limit Inferior, and Bolzano-Weierstrass file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap02/section03.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap02/section03/))
-- [2.4 Cauchy Sequences file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap02/section04.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap02/section04/))
-- [2.5 Series file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap02/section05.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap02/section05/))
-- [2.6 More on Series file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap02/section06.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap02/section06/))
+- 2.1 Sequences and Limits ([Documentation](../Chap02/section01.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap02/section01/))
+- 2.2 Facts About Limits of Sequences ([Documentation](../Chap02/section02.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap02/section02/))
+- 2.3 Limit Superior, Limit Inferior, and Bolzano-Weierstrass ([Documentation](../Chap02/section03.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap02/section03/))
+- 2.4 Cauchy Sequences ([Documentation](../Chap02/section04.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap02/section04/))
+- 2.5 Series ([Documentation](../Chap02/section05.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap02/section05/))
+- 2.6 More on Series ([Documentation](../Chap02/section06.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap02/section06/))
 
 -/

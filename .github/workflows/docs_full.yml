@@ -388,6 +388,12 @@ jobs:
           test -d ReasBook/.lake/build/doc
           test -f ReasBook/.lake/build/doc/index.html
 
+      - name: Write docs cache marker
+        run: |
+          set -euo pipefail
+          marker="$(git rev-parse HEAD:ReasBook)"
+          printf '%s\n' "$marker" > ReasBook/.lake/build/doc/.reasbook-docs-marker
+
       - name: Save final ReasBook doc cache
         continue-on-error: true
         uses: actions/cache/save@v4

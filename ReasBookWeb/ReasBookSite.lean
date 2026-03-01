@@ -375,6 +375,13 @@ def navLinkRewriteScript : String := r##"
     return li;
   }
 
+  function mkLabel(text) {
+    const li = document.createElement("li");
+    li.classList.add("nav-group-label");
+    li.textContent = text;
+    return li;
+  }
+
   function sectionHasCurrent(section, currentRoute) {
     if (sameRoute(section.route || "", currentRoute)) return true;
     if (isRoutePrefix(section.route || "", currentRoute)) return true;
@@ -408,13 +415,24 @@ def navLinkRewriteScript : String := r##"
 
     const parts = Array.isArray(section.parts) ? section.parts : [];
     if (parts.length > 0) {
+      const details = document.createElement("details");
+      details.classList.add("nav-section-parts");
+      details.open = sectionHasCurrent(section, currentRoute);
+
+      const summary = document.createElement("summary");
+      summary.textContent = "Parts (" + parts.length + ")";
+      details.appendChild(summary);
+
       const partList = document.createElement("ul");
       partList.classList.add("nav-part-list");
       for (const part of parts) {
         if (!part.route) continue;
         partList.appendChild(mkItem(routeHref(part.route), part.title || "", sameRoute(part.route, currentRoute)));
       }
-      if (partList.children.length > 0) li.appendChild(partList);
+      if (partList.children.length > 0) {
+        details.appendChild(partList);
+        li.appendChild(details);
+      }
     }
 
     return li;
@@ -448,6 +466,7 @@ def navLinkRewriteScript : String := r##"
 
   function mkBookTree(work, currentRoute) {
     const li = document.createElement("li");
+    li.classList.add("nav-current-work");
     const details = document.createElement("details");
     details.classList.add("nav-work");
     details.open = true;
@@ -481,6 +500,7 @@ def navLinkRewriteScript : String := r##"
 
   function mkPaperTree(work, currentRoute) {
     const li = document.createElement("li");
+    li.classList.add("nav-current-work");
     const details = document.createElement("details");
     details.classList.add("nav-work");
     details.open = true;
@@ -504,10 +524,12 @@ def navLinkRewriteScript : String := r##"
     return li;
   }
 
-  function mkSectionGroup(title, works) {
+  function mkSectionGroup(title, works, defaultOpen) {
     const li = document.createElement("li");
+    li.classList.add("nav-secondary-group");
     const details = document.createElement("details");
-    details.open = true;
+    details.classList.add("nav-secondary");
+    details.open = !!defaultOpen;
     const summary = document.createElement("summary");
     summary.textContent = title;
     details.appendChild(summary);
@@ -591,11 +613,15 @@ def navLinkRewriteScript : String := r##"
         list.appendChild(mkItem(siteRoot, "Home", sameRoute("", current.route)));
         list.appendChild(mkItem(siteRoot + "docs/", "Documentation", false));
         if (current.work) {
-          if (current.kind === "book") list.appendChild(mkBookTree(current.work, current.route));
-          else if (current.kind === "paper") list.appendChild(mkPaperTree(current.work, current.route));
+          list.appendChild(mkLabel(current.kind === "book" ? "Current Book" : "Current Paper"));
+          if (current.kind === "book") {
+            list.appendChild(mkBookTree(current.work, current.route));
+          } else if (current.kind === "paper") {
+            list.appendChild(mkPaperTree(current.work, current.route));
+          }
         } else {
-          list.appendChild(mkSectionGroup("Books", navData.books || []));
-          list.appendChild(mkSectionGroup("Papers", navData.papers || []));
+          list.appendChild(mkSectionGroup("Books", navData.books || [], true));
+          list.appendChild(mkSectionGroup("Papers", navData.papers || [], true));
         }
       } catch (err) {
         console.error("Failed to build sidebar navigation", err);
@@ -603,6 +629,10 @@ def navLinkRewriteScript : String := r##"
       }
       navRoot.innerHTML = "";
       navRoot.appendChild(list);
+      const currentNode = navRoot.querySelector("a.is-current");
+      if (currentNode && currentNode.scrollIntoView) {
+        currentNode.scrollIntoView({ block: "center", inline: "nearest" });
+      }
     }
 
     renderSidebarNav();
@@ -650,7 +680,7 @@ def theme : Theme := { Theme.default with
 /-- Generated section routes are injected by `reasbook_site_dir` from `ReasBookSite.RouteTable`. -/
 def demoSite : Site := reasbook_site
 
-def baseUrl := ReasBookSite.Sections.siteBase ++ "docs/"
+def baseUrl := ReasBookSite.Sections.docsRoot
 
 def linkTargets : Code.LinkTargets α where
   const name _ := #[mkLink s!"{baseUrl}find?pattern={name}#doc"]

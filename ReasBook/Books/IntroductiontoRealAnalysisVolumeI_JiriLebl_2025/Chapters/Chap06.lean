@@ -17,8 +17,8 @@ Verso links:
 
 Section overviews:
 
-- [6.1 Pointwise and Uniform Convergence file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap06/section01.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap06/section01/))
-- [6.2 Interchange of Limits file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap06/section02.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap06/section02/))
-- [6.3 Picard's Theorem file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap06/section03.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap06/section03/))
+- 6.1 Pointwise and Uniform Convergence ([Documentation](../Chap06/section01.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap06/section01/))
+- 6.2 Interchange of Limits ([Documentation](../Chap06/section02.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap06/section02/))
+- 6.3 Picard's Theorem ([Documentation](../Chap06/section03.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap06/section03/))
 
 -/

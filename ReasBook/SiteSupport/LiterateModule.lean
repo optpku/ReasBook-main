@@ -252,7 +252,7 @@ where
     return name
 end
 
-def codeOpts : CodeOpts := { contextName := `name }
+def codeOpts : CodeOpts := { contextName := `name, showProofStates := false }
 
 open Verso Doc Elab PartElabM in
 open Verso.Genre Blog in
@@ -505,6 +505,6 @@ elab_rules : command
   | `(reasbook_page $x $cfg:optConfig from $mod as $title $[with $metadata]? $[$rw:rewrites]?) => do
     let (config, _) ← liftTermElabM <| do
       litPageConfig cfg |>.run {elaborator := `x} |>.run {goals := []}
-    withScope (fun sc => {sc with opts := Elab.async.set sc.opts false}) do
+    Verso.commandWithoutAsync do
       let genre ← `(Page)
       elabReasBookPage x mod config title genre metadata rw

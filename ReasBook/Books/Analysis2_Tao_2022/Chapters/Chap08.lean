@@ -21,11 +21,11 @@ Verso links:
 
 Section overviews:
 
-- [8.1 Simple Functions file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/Analysis2_Tao_2022/Chapters/Chap08/section01.lean) ([Verso](/ReasBook-main/books/analysis2_tao_2022/chapters/chap08/section01/))
-- [8.2 Integration of Non-negative Measurable Functions file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/Analysis2_Tao_2022/Chapters/Chap08/section02.lean) ([Verso](/ReasBook-main/books/analysis2_tao_2022/chapters/chap08/section02/))
-- [8.3 Integration of Absolutely Integrable Functions file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/Analysis2_Tao_2022/Chapters/Chap08/section03.lean) ([Verso](/ReasBook-main/books/analysis2_tao_2022/chapters/chap08/section03/))
-- [8.4 Comparison with the Riemann Integral file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/Analysis2_Tao_2022/Chapters/Chap08/section04.lean) ([Verso](/ReasBook-main/books/analysis2_tao_2022/chapters/chap08/section04/))
-- [8.5 Fubini's Theorem file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/Analysis2_Tao_2022/Chapters/Chap08/section05.lean) ([Verso](/ReasBook-main/books/analysis2_tao_2022/chapters/chap08/section05/))
+- 8.1 Simple Functions ([Documentation](../Chap08/section01.html)) ([Verso](/ReasBook-main/books/analysis2_tao_2022/chapters/chap08/section01/))
+- 8.2 Integration of Non-negative Measurable Functions ([Documentation](../Chap08/section02.html)) ([Verso](/ReasBook-main/books/analysis2_tao_2022/chapters/chap08/section02/))
+- 8.3 Integration of Absolutely Integrable Functions ([Documentation](../Chap08/section03.html)) ([Verso](/ReasBook-main/books/analysis2_tao_2022/chapters/chap08/section03/))
+- 8.4 Comparison with the Riemann Integral ([Documentation](../Chap08/section04.html)) ([Verso](/ReasBook-main/books/analysis2_tao_2022/chapters/chap08/section04/))
+- 8.5 Fubini's Theorem ([Documentation](../Chap08/section05.html)) ([Verso](/ReasBook-main/books/analysis2_tao_2022/chapters/chap08/section05/))
 
 -/
 

@@ -18,9 +18,9 @@ Verso links:
 
 Section overviews:
 
-- [4.1 The Derivative file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap04/section01.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap04/section01/))
-- [4.2 Mean Value Theorem file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap04/section02.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap04/section02/))
-- [4.3 Taylor's Theorem file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap04/section03.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap04/section03/))
-- [4.4 Inverse Function Theorem file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/Chapters/Chap04/section04.lean) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap04/section04/))
+- 4.1 The Derivative ([Documentation](../Chap04/section01.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap04/section01/))
+- 4.2 Mean Value Theorem ([Documentation](../Chap04/section02.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap04/section02/))
+- 4.3 Taylor's Theorem ([Documentation](../Chap04/section03.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap04/section03/))
+- 4.4 Inverse Function Theorem ([Documentation](../Chap04/section04.html)) ([Verso](/ReasBook-main/books/introductiontorealanalysisvolumei_jirilebl_2025/chapters/chap04/section04/))
 
 -/

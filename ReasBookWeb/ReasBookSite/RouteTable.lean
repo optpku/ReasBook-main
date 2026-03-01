@@ -206,7 +206,6 @@ macro_rules
       "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part9/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part9
       "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part10/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part10
       "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part11/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part11
-      "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part12/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part12
       "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part13/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part13
       "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part14/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part14
       "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part15/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part15
@@ -633,7 +632,6 @@ def reasbook_site : Site := site ReasBookSite.Home /
   "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part9/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part9
   "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part10/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part10
   "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part11/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part11
-  "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part12/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part12
   "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part13/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part13
   "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part14/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part14
   "books/convexanalysis_rockafellar_1970/chapters/chap02/section09_part15/" Book.Books.ConvexAnalysis_Rockafellar_1970.Chapters.Chap02.section09_part15

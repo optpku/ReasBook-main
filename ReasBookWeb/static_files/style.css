@@ -67,6 +67,33 @@
     margin: 0.3em 0 0.4em 0.35em;
 }
 
+#sidebar-nav-root .nav-group-label {
+    margin-top: 0.5em;
+    margin-bottom: 0.15em;
+    padding: 0.2em 0.45em;
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #4b5563;
+}
+
+#sidebar-nav-root .nav-current-work > details {
+    border: 1px solid #d5dbe7;
+    border-radius: 6px;
+    background: #f9fafb;
+    padding: 0.15em 0.2em;
+}
+
+#sidebar-nav-root .nav-secondary-group {
+    margin-top: 0.35em;
+}
+
+#sidebar-nav-root .nav-secondary > summary {
+    font-size: 0.86em;
+    color: #374151;
+}
+
 #sidebar-nav-root .nav-chapter-item {
     margin-top: 0.15em;
 }
@@ -86,6 +113,13 @@
 
 #sidebar-nav-root .nav-part-list {
     margin: 0.1em 0 0.15em 0.65em;
+}
+
+#sidebar-nav-root .nav-section-parts > summary {
+    font-size: 0.82em;
+    color: #4b5563;
+    font-weight: 500;
+    padding: 0.05em 0.3em;
 }
 
 #sidebar-nav-root .nav-part-list a {

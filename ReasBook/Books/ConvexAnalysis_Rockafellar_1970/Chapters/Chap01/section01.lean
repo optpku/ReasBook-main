@@ -22,9 +22,9 @@ Verso links:
 
 Directory:
 
-- [Part 1 file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/ConvexAnalysis_Rockafellar_1970/Chapters/Chap01/section01_part1.lean) ([Verso](/ReasBook-main/books/convexanalysis_rockafellar_1970/chapters/chap01/section01_part1/))
-- [Part 2 file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/ConvexAnalysis_Rockafellar_1970/Chapters/Chap01/section01_part2.lean) ([Verso](/ReasBook-main/books/convexanalysis_rockafellar_1970/chapters/chap01/section01_part2/))
-- [Part 3 file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/ConvexAnalysis_Rockafellar_1970/Chapters/Chap01/section01_part3.lean) ([Verso](/ReasBook-main/books/convexanalysis_rockafellar_1970/chapters/chap01/section01_part3/))
-- [Part 4 file](https://github.com/imathwy/ReasBook-main/blob/main/ReasBook/Books/ConvexAnalysis_Rockafellar_1970/Chapters/Chap01/section01_part4.lean) ([Verso](/ReasBook-main/books/convexanalysis_rockafellar_1970/chapters/chap01/section01_part4/))
+- Part 1 ([Documentation](../section01_part1.html)) ([Verso](/ReasBook-main/books/convexanalysis_rockafellar_1970/chapters/chap01/section01_part1/))
+- Part 2 ([Documentation](../section01_part2.html)) ([Verso](/ReasBook-main/books/convexanalysis_rockafellar_1970/chapters/chap01/section01_part2/))
+- Part 3 ([Documentation](../section01_part3.html)) ([Verso](/ReasBook-main/books/convexanalysis_rockafellar_1970/chapters/chap01/section01_part3/))
+- Part 4 ([Documentation](../section01_part4.html)) ([Verso](/ReasBook-main/books/convexanalysis_rockafellar_1970/chapters/chap01/section01_part4/))
 
 -/

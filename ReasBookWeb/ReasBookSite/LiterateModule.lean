@@ -29,6 +29,19 @@ where getString : Highlighted → m String
 partial def getDocCommentString : Highlighted -> m String := getCommentString' "/--"
 end
 
+private def looksLikeModuleItem (v : Json) : Bool :=
+  match v.getObjVal? "kind", v.getObjVal? "code" with
+  | .ok _, .ok _ => true
+  | _, _ => false
+
+private partial def findModuleItemArray? (v : Json) : Option (Array Json) :=
+  match v with
+  | .arr xs =>
+    if xs.any looksLikeModuleItem then some xs else none
+  | .obj obj =>
+    (obj.toArray).findSome? fun (_, child) => findModuleItemArray? child
+  | _ => none
+
 def loadModuleContent (mod : String) (leanProject : System.FilePath := "../ReasBook")
     (overrideToolchain : Option String := none) : IO (Array (ModuleItem × Array (String × Highlighted))) := do
 
@@ -85,19 +98,93 @@ def loadModuleContent (mod : String) (leanProject : System.FilePath := "../ReasB
       IO.FS.readFile res.stdout.trim
     finally f.unlock
 
-  let .ok (.arr json) := Json.parse jsonFile
-    | throw <| IO.userError s!"Expected JSON array"
-  match json.mapM deJson with
-  | .error err =>
-    throw <| IO.userError s!"Couldn't parse JSON from output file: {err}\nIn:\n{json}"
-  | .ok val => pure val
+  let parsed ←
+    match Json.parse jsonFile with
+    | .error err =>
+      throw <| IO.userError s!"Couldn't parse JSON from output file: {err}"
+    | .ok parsed => pure parsed
+
+  -- Newer SubVerso emits `{data, items}`; decode it first so `code` can be restored.
+  match FromJson.fromJson? (α := SubVerso.Module.Module) parsed with
+  | .ok mod => pure <| mod.items.map (fun item => (item, #[]))
+  | .error _ =>
+    -- Fallback for older extractor output: array of objects with optional `terms`.
+    let json ←
+      match findModuleItemArray? parsed with
+      | some json => pure json
+      | none =>
+        let sample := if jsonFile.length > 400 then jsonFile.take 400 ++ " ..." else jsonFile
+        throw <| IO.userError s!"Couldn't find a module-item JSON array in literate output. Sample:\n{sample}"
+    match json.mapM deJson with
+    | .error err =>
+      throw <| IO.userError s!"Couldn't parse JSON from output file: {err}\nIn:\n{json}"
+    | .ok val => pure val
 
 where
+  positionFromJsonLegacy (json : Json) : Except String Lean.Position := do
+    let line ← json.getObjValAs? Nat "line"
+    let col ← json.getObjValAs? Nat "column"
+    pure {line, column := col - 1}
+
+  rangeFromJsonCompat (json : Json) : Except String (Option (Lean.Position × Lean.Position)) := do
+    match SubVerso.Module.rangeFromJson json with
+    | .ok r => pure r
+    | .error _ =>
+      if json.isNull then
+        pure none
+      else
+        match json with
+        | .arr arr =>
+          if h : arr.size = 2 then
+            let s := arr[0]
+            let e := arr[1]
+            pure (some (← positionFromJsonLegacy s, ← positionFromJsonLegacy e))
+          else
+            throw "Expected null or a 2-element range array"
+        | _ =>
+          throw "Expected range object or legacy 2-element range array"
+
+  moduleItemFromJsonCompat (v : Json) : Except String ModuleItem := do
+    match FromJson.fromJson? (α := ModuleItem) v with
+    | .ok item => pure item
+    | .error _ =>
+      let range ← v.getObjVal? "range" >>= rangeFromJsonCompat
+      let kind ← v.getObjValAs? String "kind" <&> (·.toName)
+      let defines ← v.getObjValAs? (Array String) "defines" <&> (·.map (·.toName))
+      let codeJson ← v.getObjVal? "code"
+      let code ← highlightedFromJsonCompat codeJson
+      pure {range, kind, defines, code}
+
+  highlightedFromJsonCompat (v : Json) : Except String Highlighted := do
+    match FromJson.fromJson? (α := Highlighted) v with
+    | .ok hl => pure hl
+    | .error _ =>
+      match v with
+      | .obj _ =>
+        match v.getObjVal? "highlighted" with
+        | .ok inner =>
+          match FromJson.fromJson? (α := Highlighted) inner with
+          | .ok hl => pure hl
+          | .error _ => pure Highlighted.empty
+        | .error _ => pure Highlighted.empty
+      | .arr arr =>
+        if h : arr.size = 1 then
+          highlightedFromJsonCompat arr[0]
+        else
+          pure Highlighted.empty
+      | _ => pure Highlighted.empty
+
   deJson (v : Json) : Except String (ModuleItem × Array (String × Highlighted)) := do
-    let item ← FromJson.fromJson? (α := ModuleItem) v
-    let terms ← v.getObjVal? "terms"
-    let terms ← terms.getObj?
-    let terms ← terms.toArray.mapM fun ⟨k, v⟩ => (k, ·) <$> FromJson.fromJson? v
+    let item ← moduleItemFromJsonCompat v
+    let terms : Array (String × Highlighted) ←
+      match v.getObjVal? "terms" with
+      | .ok terms =>
+        let terms ← terms.getObj?
+        terms.toArray.mapM fun ⟨k, v⟩ => do
+          let hl ← highlightedFromJsonCompat v
+          pure (k, hl)
+      | .error _ =>
+        pure #[]
     return (item, terms)
   decorateOut (name : String) (out : String) : String :=
     if out.isEmpty then "" else s!"\n{name}:\n{out}\n"
@@ -165,7 +252,7 @@ where
     return name
 end
 
-def codeOpts : CodeOpts := { contextName := `name }
+def codeOpts : CodeOpts := { contextName := `name, showProofStates := false }
 
 open Verso Doc Elab PartElabM in
 open Verso.Genre Blog in
@@ -418,6 +505,6 @@ elab_rules : command
   | `(reasbook_page $x $cfg:optConfig from $mod as $title $[with $metadata]? $[$rw:rewrites]?) => do
     let (config, _) ← liftTermElabM <| do
       litPageConfig cfg |>.run {elaborator := `x} |>.run {goals := []}
-    withScope (fun sc => {sc with opts := Elab.async.set sc.opts false}) do
+    Verso.commandWithoutAsync do
       let genre ← `(Page)
       elabReasBookPage x mod config title genre metadata rw
