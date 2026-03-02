@@ -4,7 +4,7 @@ open Verso Genre Blog
 #doc (Page) "On Some Local Rings (Maassaran, 2025)" =>
 
 - [Documentation](/ReasBook-main/docs/Papers/OnSomeLocalRings_Maassaran_2025/Paper.html)
-- [Lean source path](https://github.com/imathwy/ReasBook-main/tree/main/ReasBook/Papers/OnSomeLocalRings_Maassaran_2025/Sections/)
+- [Lean source path](https://github.com/optpku/ReasBook-main/tree/main/ReasBook/Papers/OnSomeLocalRings_Maassaran_2025/Sections/)
 
 Section index:
 

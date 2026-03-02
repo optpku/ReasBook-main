@@ -4,7 +4,7 @@ open Verso Genre Blog
 #doc (Page) "Smooth Minimization (Nesterov, 2004)" =>
 
 - [Documentation](/ReasBook-main/docs/Papers/SmoothMinimization_Nesterov_2004/Paper.html)
-- [Lean source path](https://github.com/imathwy/ReasBook-main/tree/main/ReasBook/Papers/SmoothMinimization_Nesterov_2004/Sections/)
+- [Lean source path](https://github.com/optpku/ReasBook-main/tree/main/ReasBook/Papers/SmoothMinimization_Nesterov_2004/Sections/)
 
 Section index:
 

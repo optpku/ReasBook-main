@@ -4,7 +4,7 @@ open Verso Genre Blog
 #doc (Page) "Convex Analysis (Rockafellar, 1970)" =>
 
 - [Documentation](/ReasBook-main/docs/Books/ConvexAnalysis_Rockafellar_1970/Book.html)
-- [Lean source path](https://github.com/imathwy/ReasBook-main/tree/main/ReasBook/Books/ConvexAnalysis_Rockafellar_1970/Chapters/)
+- [Lean source path](https://github.com/optpku/ReasBook-main/tree/main/ReasBook/Books/ConvexAnalysis_Rockafellar_1970/Chapters/)
 
 Section index:
 
