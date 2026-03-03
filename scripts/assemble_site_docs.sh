@@ -16,6 +16,19 @@ cp -r "$source_docs_dir"/. "$web_docs_dir"/
 find "$web_docs_dir" -name "*.trace" -delete || true
 find "$web_docs_dir" -name "*.hash" -delete || true
 
+# doc-gen may rewrite absolute links as "../.././/<repo>/..."; normalize
+# these back to site-root absolute links so aggregate pages navigate correctly.
+site_root="${REASBOOK_SITE_ROOT:-/ReasBook/}"
+site_root="${site_root%/}/"
+repo_name="${site_root#/}"
+repo_name="${repo_name%/}"
+if [ -n "$repo_name" ]; then
+  escaped_repo_name="$(printf '%s' "$repo_name" | sed -e 's/[.[\*^$()+?{}|/]/\\&/g')"
+  find "$web_docs_dir" -type f -name "*.html" -print0 \
+    | xargs -0 perl -0777 -i -pe \
+      "s#href=\"(?:\\.\\./)+\\.//${escaped_repo_name}/#href=\"/${repo_name}/#g; s#href=\"(?:\\.\\./)+${escaped_repo_name}/#href=\"/${repo_name}/#g"
+fi
+
 if [ ! -f "$web_docs_dir/index.html" ]; then
   cat > "$web_docs_dir/index.html" <<'EOF'
 <!doctype html>
