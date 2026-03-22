@@ -108,8 +108,9 @@ If generated artifacts were previously committed, untrack them (without deleting
 ## Sponsors
 
 - Beijing International Center for Mathematical Research, Peking University
-- Sino-Russian Mathematics Center
 - Great Bay University
+- Huawei
+- Sino-Russian Mathematics Center
 - National Natural Science Foundation of China
 
 ## Lean Projects
